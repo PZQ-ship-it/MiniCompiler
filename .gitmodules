@@ -1,0 +1,3 @@
+[submodule "sp25-tests"]
+	path = sp25-tests
+	url = https://git.zju.edu.cn/compiler/sp25-tests.git

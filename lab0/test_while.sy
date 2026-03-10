@@ -1,0 +1,15 @@
+// while_error_test.sy
+int main() {
+    int a = 5;
+    int arr[3];
+    
+    while (arr) {  // 错误1：使用数组作为条件表达式（应该是int类型）
+        a = a - 1;
+        if (a == 3) {
+            return;  // 错误2：int函数中使用了无返回值的return语句
+        }
+        arr[0] = arr;  // 错误3：数组之间的赋值（类型不匹配）
+    }
+    
+    return 0;
+}

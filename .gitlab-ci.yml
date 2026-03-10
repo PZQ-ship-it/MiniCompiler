@@ -1,0 +1,14 @@
+image: ghcr.io/zju-cp/compiler-tester:latest
+
+test:
+  stage: test
+  tags:
+    - compiler-tester
+  script:
+    - bash build.sh
+    - if [ -d 'sp25-tests' ]; then rm -r sp25-tests; fi
+    - git clone https://git.zju.edu.cn/compiler/sp25-tests.git
+    - python3 sp25-tests/test.py $CI_COMMIT_REF_NAME .
+  only:
+    - /^lab[0-4]$/
+    - /^bonus[1-3]$/

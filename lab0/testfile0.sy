@@ -1,0 +1,163 @@
+// 测试基本的SysY语言功能
+
+int global=10;
+void f(){return;}
+// 辅助函数定义
+int helper(int a, int b) {
+    int result;
+    result = 42 + a;
+    return result;
+}
+
+void change(int a) {
+    int b;
+    b = a;
+    return;
+}
+
+int deepWhileBr(int a, int b) {
+  int c;
+  c = a + b;
+  int m[2]={1,2};
+  while (c < 75) {
+    int d;
+    d = 42;
+    if (c < 100) {
+      c = c + d;
+      if (c > 99) {
+        int e;
+        e = d * 2;
+        if (m == 1) {
+          c = e * 2;
+        }
+      }
+    }
+  }
+  return c;
+}
+
+int ifWhile() {
+  int a;
+  a = 0;
+  a = 0234;
+  a = 0x12;
+  a = 0x1ab;
+  a = 0X12;
+  a = 0X9ab;
+  int b;
+  b = 3;
+  if (a == 5) {
+    while(b == 2){
+      b = b + 2;
+    }
+    b = b + 25;
+  }
+  else 
+    while (a < 5) {
+      b = b * 2;
+      a = a + 1;
+    }
+  return b;
+}
+
+int whileIf() {
+  int a;
+  a = 0;
+  int b;
+  b = 0;
+  while (a < 100) {
+    if (a == 5) {
+      b = 25;
+    }
+    else if (a == 10) {
+      b = 42;  
+    }
+    else {
+      b = a * 2;
+    }
+    a = a + 1;
+  }
+  return b;
+}
+
+int f(int array[][2][2]) {
+  int a = array[0][0][0];
+  int b = array[0][0][1];
+
+  return (a+b);
+}
+
+// 主函数 - 程序入口点
+int main() {
+    // 局部变量声明
+    int local=5;
+    int x=6, y=7, z=8;
+    int a, b;
+    int p;
+    p = 2;
+    p = deepWhileBr(p, p);
+    ;
+    // 简单赋值
+    local = 10;
+    
+    // 一元表达式测试
+    x = +5;
+    y = -local;
+    
+    // 二元加法表达式
+    a = x + y;
+    b = local + a;
+    z = a*b;
+    a = z - b;
+    x = a / b;
+    y = x % a;
+    b = !y;
+
+    if(a == 5){
+    if (b == 10) 
+        a = 25;
+    }
+    else 
+        a = a + 15;
+
+    if(a == 5){
+    if (b == 10) 
+      a = 25;
+    else 
+      a = a + 15;
+    }
+
+    int i;
+    i = 5;
+    int j;
+    j = 7;
+    while (i < 100) {
+        i = i + 30;
+        while(j < 100){
+        j = j + 6;
+        }
+        j = j - 100;
+    }
+    
+    // 函数调用(有参数)
+    global = helper(10,b);  // 传入参数
+    change(global);  // 传入参数
+    ifWhile();
+    whileIf();
+    int n[10];
+    int m[10][10];
+    n[0] = 5;
+    m[0][0] = 5;
+    int c[4][2] = {{1, 2}, {3, 4}, {5, 6}, {7, 8}};
+    int d[4][2] = {1, 2, {3}, {5}, 7 , 8};
+    int e[4][2] = {{d[2][1], c[2][1]}, {3, 4}, {5, 6}, {7, 8}};
+    int array[2][2][2] = {1, 2, 3, 4, 5, 6, 7, 8};
+    write(f(array));
+    // 函数调用(有参数)
+    write(global);
+    write(a + b);
+    
+    // 返回语句
+    return a + b + global;
+}
+
